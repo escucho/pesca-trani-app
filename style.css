@@ -1,0 +1,281 @@
+/* Variabili CSS per i temi */
+:root {
+    --bg-color: #f4f7f6;
+    --text-color: #333;
+    --primary-color: #007bff;
+    --secondary-color: #0056b3;
+    --header-bg: #007bff;
+    --header-text: white;
+    --card-bg: white;
+    --card-border: #e0e0e0;
+    --info-section-bg: #f8f9fa;
+    --info-section-border: #e9ecef;
+    --button-bg: #28a745;
+    --button-text: white;
+    --button-today-bg: #17a2b8;
+    --shadow-color: rgba(0,0,0,0.1);
+    --link-color: #1967d2;
+
+    /* Colori per i periodi */
+    --very-good-bg: #d1e7dd; /* Verde Bootstrap success light */
+    --very-good-border: #0f5132;
+    --good-bg: #cff4fc; /* Ciano Bootstrap info light */
+    --good-border: #055160;
+    --decent-bg: #fff3cd; /* Giallo Bootstrap warning light */
+    --decent-border: #664d03;
+    --interesting-bg: #f8f9fa; /* Grigio Bootstrap light */
+    --interesting-border: #adb5bd;
+}
+
+[data-theme="dark"] {
+    --bg-color: #121212; /* Sfondo scuro principale */
+    --text-color: #e0e0e0; /* Testo chiaro */
+    --primary-color: #3793ff; /* Blu più brillante per tema scuro */
+    --secondary-color: #63a4ff;
+    --header-bg: #1e1e1e; /* Header scuro */
+    --header-text: #e0e0e0;
+    --card-bg: #1e1e1e; /* Sfondo card scuro */
+    --card-border: #333;
+    --info-section-bg: #2a2a2a; /* Sezioni info più scure */
+    --info-section-border: #383838;
+    --button-bg: #30914d; /* Verde leggermente diverso per tema scuro */
+    --button-text: #e0e0e0;
+    --button-today-bg: #2a8fa1;
+    --shadow-color: rgba(255,255,255,0.05);
+    --link-color: #64b5f6; /* Blu link più chiaro */
+
+    /* Colori per i periodi in tema scuro */
+    --very-good-bg: #1a3a2a; 
+    --very-good-border: #28a745;
+    --good-bg: #103c4a;
+    --good-border: #17a2b8;
+    --decent-bg: #4d3c0c;
+    --decent-border: #ffc107;
+    --interesting-bg: #343a40;
+    --interesting-border: #6c757d;
+}
+
+
+/* Reset di base e Stili Globali */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transizione per cambio tema */
+}
+
+/* Header */
+header {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    padding: 1em; /* Ridotto per tema switcher */
+    text-align: center;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    display: flex; /* Per allineare titolo e switcher */
+    justify-content: space-between; /* Spinge il titolo a sx e lo switcher a dx */
+    align-items: center; /* Allinea verticalmente */
+}
+.header-content {
+    text-align: left; /* Allinea titolo e ora a sinistra */
+}
+header h1 {
+    margin: 0;
+    font-size: 1.6em; /* Leggermente ridotto per fare spazio */
+    font-weight: 600;
+}
+header p { /* Ora attuale */
+    margin: 0.2em 0 0;
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+.theme-switcher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9em;
+}
+.theme-switcher label {
+    cursor: pointer;
+}
+/* Stile base per il checkbox come toggle (può essere migliorato) */
+#theme-toggle {
+    appearance: none;
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#theme-toggle::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: white;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+}
+#theme-toggle:checked {
+    background-color: var(--primary-color);
+}
+#theme-toggle:checked::before {
+    transform: translateX(20px);
+}
+
+
+/* Contenitore Principale */
+main {
+    max-width: 850px;
+    margin: 25px auto;
+    padding: 25px;
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    border-radius: 10px;
+}
+
+/* Sezione Controlli */
+.controls {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--card-border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+.controls label {
+    font-weight: 500;
+    margin-right: 5px;
+}
+.controls input[type="date"],
+.controls button {
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: 1px solid var(--card-border);
+    font-size: 1em;
+    transition: all 0.2s ease-in-out;
+    background-color: var(--card-bg); /* Per input date in tema scuro */
+    color: var(--text-color); /* Per input date in tema scuro */
+}
+.controls input[type="date"]:focus,
+.controls button:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--primary-color) 25%, transparent);
+}
+.controls button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    cursor: pointer;
+    font-weight: 500;
+}
+.controls button#today-button {
+    background-color: var(--button-today-bg);
+}
+.controls button#today-button:hover {
+    background-color: color-mix(in srgb, var(--button-today-bg) 85%, black);
+}
+.controls button:hover {
+    background-color: color-mix(in srgb, var(--button-bg) 85%, black);
+    transform: translateY(-1px);
+}
+.controls button:disabled {
+    background-color: #adb5bd;
+    color: #6c757d;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Sezioni Informazioni */
+#results h2 {
+    margin-top: 0; margin-bottom: 20px;
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+.info-section {
+    margin-bottom: 20px; padding: 15px;
+    background-color: var(--info-section-bg);
+    border-radius: 8px;
+    border: 1px solid var(--info-section-border);
+}
+.info-section h3 {
+    margin-top: 0; margin-bottom: 10px;
+    color: var(--secondary-color);
+    font-size: 1.2em;
+}
+.info-section p { margin: 5px 0; font-size: 0.95em; }
+.info-section p span { font-weight: 500; }
+
+/* Input Manuale Maree */
+.manual-tide-input {
+    margin-top: 10px; margin-bottom: 15px; padding: 10px;
+    border: 1px dashed var(--primary-color);
+    border-radius: 6px;
+    background-color: color-mix(in srgb, var(--info-section-bg) 90%, var(--primary-color) 5%);
+}
+.manual-tide-input p { margin-top: 0; font-size: 0.9em; }
+.manual-tide-input div { margin-bottom: 8px; }
+.manual-tide-input label { display: inline-block; min-width: 200px; margin-right: 5px; font-size: 0.9em; }
+.manual-tide-input input[type="text"] {
+    padding: 6px 10px; border-radius: 4px;
+    border: 1px solid var(--card-border);
+    font-size: 0.9em; width: calc(100% - 220px); max-width: 200px;
+    background-color: var(--card-bg); color: var(--text-color);
+}
+#tide-source-indicator { font-size: 0.8em; font-style: italic; color: var(--text-color); opacity: 0.7;}
+
+
+/* Sezione Momenti Consigliati */
+#best-times h3 { color: var(--secondary-color); margin-bottom: 15px; }
+#recommended-list { list-style-type: none; padding-left: 0; }
+#recommended-list li {
+    margin-bottom: 15px; padding: 15px;
+    border: 1px solid var(--card-border);
+    border-radius: 8px; line-height: 1.6;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: var(--card-bg);
+}
+#recommended-list li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px var(--shadow-color);
+}
+#recommended-list li strong { color: var(--link-color); } /* Per orari Da...A... e nomi evento dominanti */
+#recommended-list li em { color: var(--text-color); opacity:0.8; font-style: normal; } /* Per punteggio */
+
+/* Classi per qualità periodi */
+.very-good-period { background-color: var(--very-good-bg); border-left: 6px solid var(--very-good-border); }
+.good-period { background-color: var(--good-bg); border-left: 6px solid var(--good-border); }
+.decent-period { background-color: var(--decent-bg); border-left: 6px solid var(--decent-border); }
+.interesting-period { background-color: var(--interesting-bg); border-left: 6px solid var(--interesting-border); }
+
+.badge-icon { font-size: 1.2em; margin-left: 8px; vertical-align: -0.1em; }
+.quality-text { font-style: italic; font-size: 0.9em; opacity: 0.8; margin-left: 5px; }
+
+/* Footer */
+footer {
+    text-align: center; margin-top: 40px; padding: 20px;
+    background-color: #343a40; /* Footer rimane scuro */
+    color: #f8f9fa;
+    font-size: 0.9em;
+}
+footer small { opacity: 0.8; }
+
+/* Responsive */
+@media (max-width: 700px) { /* Aumentato breakpoint per header */
+    header { flex-direction: column; gap: 10px; }
+    header h1 { font-size: 1.4em; }
+    .theme-switcher { margin-top: 5px; }
+}
+@media (max-width: 600px) {
+    main { margin: 10px; padding: 15px; }
+    .controls { flex-direction: column; align-items: stretch; }
+}

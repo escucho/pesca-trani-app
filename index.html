@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="it"> <!-- Aggiungeremo un attributo data-theme qui con JS -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesca a Trani - Momento Migliore</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Consigli Pesca Bolognese a Trani</h1>
+            <p>Ora Attuale: <span id="current-time">--:--:--</span></p>
+        </div>
+        <div class="theme-switcher">
+            <label for="theme-toggle">Tema Scuro:</label>
+            <input type="checkbox" id="theme-toggle">
+        </div>
+    </header>
+
+    <!-- ... resto dell'HTML come prima ... -->
+    <main>
+        <div class="controls">
+            <label for="date-picker">Seleziona una data:</label>
+            <input type="date" id="date-picker">
+            <button id="today-button">Oggi</button>
+            <button id="get-info-button">Mostra Info</button>
+        </div>
+
+        <div id="results">
+            <h2>Informazioni per la data selezionata:</h2>
+            
+            <div class="info-section" id="solar-info">
+                <h3>☀️ Sole:</h3>
+                <p>Alba: <span id="sunrise">--:--</span></p>
+                <p>Tramonto: <span id="sunset">--:--</span></p>
+            </div>
+            
+            <div class="info-section" id="lunar-info">
+                <h3>🌙 Luna:</h3>
+                <p>Alba Lunare: <span id="moonrise">--:--</span></p>
+                <p>Tramonto Lunare: <span id="moonset">--:--</span></p>
+                <p>Transito Superiore (Picco Alto): <span id="moon-transit-upper">--:--</span></p>
+                <p>Transito Inferiore (Picco Basso): <span id="moon-transit-lower">--:--</span></p>
+                <p>Fase Lunare: <span id="moon-phase">--</span> (<span id="moon-illumination">--</span>% illuminata)</p>
+            </div>
+            
+            <div class="info-section" id="tide-info">
+                <h3>🌊 Maree <span id="tide-source-indicator">(Fonte: Stormglass.io)</span></h3>
+                
+                <div class="manual-tide-input">
+                    <p><strong>Inserisci manualmente le maree per questa data?</strong> (Lascia vuoto per usare l'API)</p>
+                    <div>
+                        <label for="manual-high-tide">Alta Marea (HH:MM,HH:MM):</label>
+                        <input type="text" id="manual-high-tide" placeholder="Es. 08:30,20:45">
+                    </div>
+                    <div>
+                        <label for="manual-low-tide">Bassa Marea (HH:MM,HH:MM):</label>
+                        <input type="text" id="manual-low-tide" placeholder="Es. 02:15,14:30">
+                    </div>
+                </div>
+                
+                <p>Alta Marea (API/Manuale): <span id="high-tide">--:--</span></p>
+                <p>Bassa Marea (API/Manuale): <span id="low-tide">--:--</span></p>
+            </div>
+            
+            <div id="best-times">
+                <h3>🎣 Momenti Consigliati per la Pesca:</h3>
+                <ul id="recommended-list">
+                    <li>Seleziona una data e clicca "Mostra Info".</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p><small>Disclaimer: Le previsioni sono indicative e basate su modelli. L'esperienza locale è sempre fondamentale.</small></p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/suncalc/1.9.0/suncalc.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
